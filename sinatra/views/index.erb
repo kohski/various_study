@@ -1,0 +1,14 @@
+
+<h1>My BBS</h1>
+<ul>
+  <% @comments.each do |comment| %>
+    <li data-id="<%= comment.id %>" data-token="<%= csrf_token %>" >
+    <%= h(comment.body) %>
+    <span class="delete">[ｘ]</span></li>
+  <% end %>
+</ul>
+<form action="/create" method="post">
+<%= csrf_tag %>
+  <input type="text" name="body">
+  <input type="submit" value="Add Comment" >
+</form>
